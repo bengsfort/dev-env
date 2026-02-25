@@ -7,6 +7,8 @@ sudo -v
 
 cd ~
 
+_final_steps=""
+
 # Install yay before anything
 echo "Installing yay"
 sudo pacman -S --needed git base-devel
@@ -45,3 +47,23 @@ pnpm -v
 # Zig
 echo "Installing zig"
 sudo pacman -S zig zls
+
+# Spotify via ncspot
+echo "Installing spotify via 'ncspot'"
+sudo pacman -S ncspot
+
+# Install and enable os-prober, this enables grub to find Windows when dual booting.
+if [ -f "/etc/default/grub" ]; then
+	echo "Installing os-prober"
+	sudo pacman -S os-prober
+	_final_steps+='
+		- Enable os prober:
+			- Set "GRUB_DISABLE_OS_PROBER=false" in /etc/default/grub
+			- Run "sudo grub-mkconfig -o /boot/grub/grub.cfg" to regen grub config
+	'
+else
+	echo "Skipping os-prober installation (grub not installed)"
+fi
+
+echo "Completed installation. Perform any remaining steps listed below (if none, nothing to do)"
+echo _final_steps
