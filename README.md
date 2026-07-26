@@ -15,7 +15,7 @@ My local development environment.
 1. Install [zsh and oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
 1. Make sure zsh is the default shell
 1. Set the `ZSH_CUSTOM` var in the generated `.zshrc` to the the `zsh` directory in this repo
-1. Update the plugins in the `.zshrc`: `git nvm ssh-agent gpg-agent`
+1. Update the plugins in the `.zshrc`: `git nvm`
 
 ## Install Node.js
 
